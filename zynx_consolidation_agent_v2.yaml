@@ -1,0 +1,130 @@
+# Zynx Consolidation Agent v2 Configuration
+# ========================================
+
+extensions:
+  deeja_memory_loader:
+    source: "memory_logs/**/*.json"
+    purpose: "extract memory context & emotion tags"
+    enabled: true
+    match_strategies:
+      - exact_task_id_match
+      - workflow_name_similarity
+      - trigger_pattern_match
+      - context_similarity
+  
+  mcp_prompt_index:
+    source: "mcp_prompts/**/*.json"
+    match_on: ["task_type", "workflow_tag"]
+    purpose: "infer intent from previous prompts"
+    enabled: true
+    reasoning_threshold: 0.3
+    max_matches_per_workflow: 3
+
+integration:
+  memory_workflow_matching:
+    - merge_workflow_metadata_with_memory()
+    - extract_emotion_context()
+    - apply_deeja_tags()
+  
+  prompt_workflow_matching:
+    - infer_consolidated_goals_from_prompt_history()
+    - calculate_reasoning_scores()
+    - inject_prompt_context()
+  
+  deduplication:
+    - deduplicate_based_on_memory_id()
+    - deduplicate_based_on_trigger_pattern()
+    - merge_similar_emotion_contexts()
+
+workflow_categories:
+  pr_management:
+    keywords: ["pull request", "pr", "review", "merge", "approval"]
+    emotion_context: ["frustrated", "satisfied", "anxious"]
+    prompt_types: ["code_review", "merge_approval", "pr_validation"]
+  
+  deployment:
+    keywords: ["deploy", "release", "build", "publish", "docker"]
+    emotion_context: ["excited", "nervous", "confident"]
+    prompt_types: ["deployment_automation", "release_management", "infrastructure"]
+  
+  memory_debugger:
+    keywords: ["debug", "memory", "log", "monitor", "profile"]
+    emotion_context: ["focused", "curious", "determined"]
+    prompt_types: ["debugging", "performance_analysis", "memory_optimization"]
+  
+  mvp_testing:
+    keywords: ["test", "validate", "check", "verify", "assert"]
+    emotion_context: ["hopeful", "cautious", "optimistic"]
+    prompt_types: ["test_automation", "validation", "quality_assurance"]
+
+output_files:
+  overlap_matrix: "overlap_matrix.md"
+  emotion_index: "Zynx_Emotion_Consolidated_Index.md"
+  mcp_reasoning_map: "MCP_Prompt_Reasoning_Map.md"
+  consolidated_workflows: "consolidated_*.yml"
+
+memory_integration:
+  deeja_memory_fields:
+    - memory_id
+    - task_id
+    - emotion
+    - tag
+    - context
+    - timestamp
+    - trigger_pattern
+    - workflow_name
+  
+  emotion_mapping:
+    positive: ["excited", "satisfied", "confident", "optimistic", "hopeful"]
+    negative: ["frustrated", "anxious", "nervous", "cautious"]
+    neutral: ["focused", "curious", "determined"]
+
+prompt_integration:
+  mcp_prompt_fields:
+    - prompt_id
+    - task_type
+    - workflow_tag
+    - prompt
+    - reasoning_score
+    - injected_context
+    - timestamp
+  
+  reasoning_score_weights:
+    exact_match: 1.0
+    high_similarity: 0.8
+    medium_similarity: 0.6
+    low_similarity: 0.3
+
+clustering:
+  enhanced_clustering:
+    use_memory_context: true
+    use_prompt_context: true
+    emotion_weight: 0.3
+    reasoning_weight: 0.2
+    content_weight: 0.5
+  
+  similarity_thresholds:
+    exact_match: 1.0
+    high_similarity: 0.7
+    medium_similarity: 0.5
+    low_similarity: 0.3
+
+consolidation:
+  enhanced_consolidation:
+    include_memory_context: true
+    include_prompt_context: true
+    merge_emotion_contexts: true
+    average_reasoning_scores: true
+  
+  output_format:
+    include_memory_metadata: true
+    include_prompt_metadata: true
+    include_emotion_tags: true
+    include_reasoning_scores: true
+
+logging:
+  level: "INFO"
+  include_memory_matches: true
+  include_prompt_matches: true
+  include_emotion_analysis: true
+  include_reasoning_analysis: true

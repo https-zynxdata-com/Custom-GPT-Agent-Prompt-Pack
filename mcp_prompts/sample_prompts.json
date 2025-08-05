@@ -1,0 +1,65 @@
+[
+  {
+    "prompt_id": "prompt_001",
+    "task_type": "code_review",
+    "workflow_tag": "pr_management",
+    "prompt": "Automate code quality checks for pull requests including linting, testing, and security scanning",
+    "reasoning_score": 0.95,
+    "injected_context": "User wants to streamline PR review process and catch issues early",
+    "timestamp": "2024-01-15T10:35:00Z"
+  },
+  {
+    "prompt_id": "prompt_002",
+    "task_type": "deployment",
+    "workflow_tag": "deployment",
+    "prompt": "Create automated deployment pipeline with build, test, and deploy stages",
+    "reasoning_score": 0.88,
+    "injected_context": "User needs reliable deployment automation for production releases",
+    "timestamp": "2024-01-16T14:25:00Z"
+  },
+  {
+    "prompt_id": "prompt_003",
+    "task_type": "debugging",
+    "workflow_tag": "memory_debugger",
+    "prompt": "Set up memory profiling and performance monitoring for application optimization",
+    "reasoning_score": 0.82,
+    "injected_context": "User experiencing performance issues and needs diagnostic tools",
+    "timestamp": "2024-01-17T09:20:00Z"
+  },
+  {
+    "prompt_id": "prompt_004",
+    "task_type": "testing",
+    "workflow_tag": "mvp_testing",
+    "prompt": "Implement comprehensive testing strategy for MVP validation and quality assurance",
+    "reasoning_score": 0.91,
+    "injected_context": "User wants to ensure MVP meets requirements and is ready for production",
+    "timestamp": "2024-01-18T16:50:00Z"
+  },
+  {
+    "prompt_id": "prompt_005",
+    "task_type": "documentation",
+    "workflow_tag": "documentation",
+    "prompt": "Automate documentation generation and deployment for API docs and user guides",
+    "reasoning_score": 0.76,
+    "injected_context": "User needs to keep documentation synchronized with code changes",
+    "timestamp": "2024-01-19T11:35:00Z"
+  },
+  {
+    "prompt_id": "prompt_006",
+    "task_type": "security",
+    "workflow_tag": "security",
+    "prompt": "Integrate security scanning and vulnerability assessment into CI/CD pipeline",
+    "reasoning_score": 0.89,
+    "injected_context": "User wants to ensure security compliance and catch vulnerabilities early",
+    "timestamp": "2024-01-20T13:15:00Z"
+  },
+  {
+    "prompt_id": "prompt_007",
+    "task_type": "monitoring",
+    "workflow_tag": "monitoring",
+    "prompt": "Set up application monitoring and alerting for production systems",
+    "reasoning_score": 0.84,
+    "injected_context": "User needs visibility into application performance and health",
+    "timestamp": "2024-01-21T08:45:00Z"
+  }
+]

@@ -1,40 +1,53 @@
 name: Zynx PR Management Master Workflow
-description: Consolidated workflow for PR Management operations
+description: Consolidated workflow for PR Management operations with memory context
 'on':
+  '- image_generation: true  (for diagrams/mockups)': {}
   pull_request:
     branches:
     - main
     - develop
+  schedule: {}
   push:
     branches:
     - main
     - develop
-  schedule: {}
 jobs:
-  deploy_to_production_0:
+  zynx_pr_management_master_workflow_0:
     runs-on: ubuntu-latest
     steps:
     - name: 'Action: npm run build...'
       run: npm run build
     - name: 'Action: docker-compose up -d...'
       run: docker-compose up -d
-  memory_analysis_1:
-    runs-on: ubuntu-latest
-    steps:
     - name: 'Action: python memory_profiler.py...'
       run: python memory_profiler.py
     - name: 'Action: python generate_report.py...'
       run: python generate_report.py
-  pr_review_workflow_2:
-    runs-on: ubuntu-latest
-    steps:
     - name: 'Action: actions/checkout@v3...'
       run: actions/checkout@v3
     - name: 'Action: npm test...'
       run: npm test
     - name: 'Action: npm run lint...'
       run: npm run lint
+  "\U0001F4E6_custom_gpt\_agent_\u2013_prompt_pack_1":
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Action: 6. **Actions Tab** (optional external APIs)...'
+      run: 6. **Actions Tab** (optional external APIs)
+    - name: "Action: ### 3. \U0001F4AC Sample Interactions..."
+      run: "### 3. \U0001F4AC Sample Interactions"
 env:
-  DEPLOY TO PRODUCTION_ENABLED: 'true'
-  MEMORY ANALYSIS_ENABLED: 'true'
-  PR REVIEW WORKFLOW_ENABLED: 'true'
+  ZYNX PR MANAGEMENT MASTER WORKFLOW_ENABLED: 'true'
+  ZYNX PR MANAGEMENT MASTER WORKFLOW_EMOTION: frustrated
+  "\U0001F4E6 CUSTOM GPT\_AGENT \u2013 PROMPT PACK_ENABLED": 'true'
+memory_context:
+  emotions:
+  - frustrated
+  deeja_tags:
+  - code_review
+  memory_ids:
+  - mem_001
+prompt_context:
+  prompt_ids: []
+  reasoning_scores: []
+  average_reasoning_score: 0.0

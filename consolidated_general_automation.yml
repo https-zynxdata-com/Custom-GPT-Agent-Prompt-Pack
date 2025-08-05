@@ -1,0 +1,21 @@
+name: Zynx General Automation Master Workflow
+description: Consolidated workflow for General Automation operations with memory context
+'on': {}
+jobs:
+  zynx_automation_index_0:
+    runs-on: ubuntu-latest
+    steps: []
+  _1:
+    runs-on: ubuntu-latest
+    steps: []
+env:
+  ZYNX AUTOMATION INDEX_ENABLED: 'true'
+  _ENABLED: 'true'
+memory_context:
+  emotions: []
+  deeja_tags: []
+  memory_ids: []
+prompt_context:
+  prompt_ids: []
+  reasoning_scores: []
+  average_reasoning_score: 0.0

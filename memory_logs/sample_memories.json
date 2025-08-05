@@ -1,0 +1,52 @@
+[
+  {
+    "memory_id": "mem_001",
+    "task_id": "pr_review_workflow",
+    "emotion": "frustrated",
+    "tag": "code_review",
+    "context": "User was frustrated with slow PR review process, wanted to automate code quality checks",
+    "timestamp": "2024-01-15T10:30:00Z",
+    "trigger_pattern": "pull_request",
+    "workflow_name": "PR Review Workflow"
+  },
+  {
+    "memory_id": "mem_002",
+    "task_id": "deploy_production",
+    "emotion": "excited",
+    "tag": "deployment",
+    "context": "User was excited about new deployment automation, wanted to streamline release process",
+    "timestamp": "2024-01-16T14:20:00Z",
+    "trigger_pattern": "push",
+    "workflow_name": "Deploy to Production"
+  },
+  {
+    "memory_id": "mem_003",
+    "task_id": "memory_analysis",
+    "emotion": "focused",
+    "tag": "debugging",
+    "context": "User was focused on performance issues, needed memory profiling and analysis tools",
+    "timestamp": "2024-01-17T09:15:00Z",
+    "trigger_pattern": "schedule",
+    "workflow_name": "Memory Analysis"
+  },
+  {
+    "memory_id": "mem_004",
+    "task_id": "mvp_validation",
+    "emotion": "hopeful",
+    "tag": "testing",
+    "context": "User was hopeful about MVP testing, wanted to validate core functionality quickly",
+    "timestamp": "2024-01-18T16:45:00Z",
+    "trigger_pattern": "workflow_dispatch",
+    "workflow_name": "MVP Validation"
+  },
+  {
+    "memory_id": "mem_005",
+    "task_id": "docs_workflow",
+    "emotion": "satisfied",
+    "tag": "documentation",
+    "context": "User was satisfied with documentation automation, wanted to keep docs up to date",
+    "timestamp": "2024-01-19T11:30:00Z",
+    "trigger_pattern": "documentation_update",
+    "workflow_name": "Documentation Workflow"
+  }
+]
