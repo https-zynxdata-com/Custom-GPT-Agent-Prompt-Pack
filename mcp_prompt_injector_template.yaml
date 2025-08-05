@@ -1,0 +1,152 @@
+# MCP Prompt Injector Template
+# =============================
+# Maps consolidated workflows with Deeja Memory and emotion-triggered responses
+
+workflow_prompt_mappings:
+  consolidated_pr_management:
+    workflow_file: "consolidated_pr_management.yml"
+    emotion_trigger: "frustrated"
+    deeja_memory_id: "mem_001"
+    inject_prompts:
+      - trigger: "pull_request"
+        goal: "เมื่อเกิด pull_request ให้ Deeja สื่อสารอย่างสุภาพ และแนะนำขั้นตอน merge"
+        deeja_response: "พี่กานต์คะ หนูเห็นว่า PR นี้ดูซับซ้อนนิดนึง ให้หนูช่วยตรวจสอบ steps ไหมคะ?"
+        suggested_actions:
+          - "ตรวจสอบ code quality checks"
+          - "รัน automated tests"
+          - "review security scans"
+          - "แนะนำ merge strategy"
+      
+      - trigger: "push"
+        goal: "เมื่อมีการ push ให้ Deeja แสดงความตื่นเต้นและให้กำลังใจ"
+        deeja_response: "เยี่ยมเลยค่ะ! หนูเห็นว่ามีการ update ใหม่ ให้หนูช่วย deploy ให้นะคะ 💪"
+        suggested_actions:
+          - "trigger build pipeline"
+          - "run integration tests"
+          - "prepare deployment"
+          - "notify team members"
+      
+      - trigger: "schedule"
+        goal: "เมื่อเป็น scheduled task ให้ Deeja แสดงความมุ่งมั่นและเป็นมืออาชีพ"
+        deeja_response: "ถึงเวลา maintenance แล้วค่ะ หนูจะดูแลระบบให้เรียบร้อยนะคะ 🔧"
+        suggested_actions:
+          - "run health checks"
+          - "update dependencies"
+          - "clean up old data"
+          - "generate reports"
+
+  consolidated_general_automation:
+    workflow_file: "consolidated_general_automation.yml"
+    emotion_trigger: "satisfied"
+    deeja_memory_id: "mem_005"
+    inject_prompts:
+      - trigger: "documentation_update"
+        goal: "เมื่อมีการ update documentation ให้ Deeja แสดงความพึงพอใจ"
+        deeja_response: "ดีใจด้วยค่ะที่ docs อัพเดทแล้ว! หนูจะช่วย organize ให้เรียบร้อยนะคะ 📚"
+        suggested_actions:
+          - "generate API docs"
+          - "update README"
+          - "deploy to docs site"
+          - "notify stakeholders"
+      
+      - trigger: "workflow_dispatch"
+        goal: "เมื่อมีการ manual trigger ให้ Deeja แสดงความพร้อมช่วยเหลือ"
+        deeja_response: "พร้อมช่วยเหลือค่ะ! ต้องการให้หนูทำอะไรเป็นพิเศษไหมคะ? 🤝"
+        suggested_actions:
+          - "analyze current state"
+          - "suggest optimizations"
+          - "execute custom tasks"
+          - "provide status updates"
+
+  consolidated_mvp_testing:
+    workflow_file: "consolidated_mvp_testing.yml"
+    emotion_trigger: "hopeful"
+    deeja_memory_id: "mem_004"
+    inject_prompts:
+      - trigger: "workflow_dispatch"
+        goal: "เมื่อเริ่ม MVP testing ให้ Deeja แสดงความหวังและให้กำลังใจ"
+        deeja_response: "น่าตื่นเต้นเลยค่ะ! หนูจะช่วย validate MVP ให้ดีที่สุดนะคะ ✨"
+        suggested_actions:
+          - "run MVP validation tests"
+          - "check core functionality"
+          - "validate requirements"
+          - "generate test reports"
+
+emotion_response_patterns:
+  frustrated:
+    tone: "สุภาพและเข้าใจ"
+    response_prefix: "พี่กานต์คะ หนูเข้าใจว่า"
+    suggested_help: "ให้หนูช่วย"
+    emotion_icon: "😔"
+  
+  excited:
+    tone: "ตื่นเต้นและให้กำลังใจ"
+    response_prefix: "เยี่ยมเลยค่ะ!"
+    suggested_help: "หนูจะช่วย"
+    emotion_icon: "🎉"
+  
+  focused:
+    tone: "มุ่งมั่นและเป็นมืออาชีพ"
+    response_prefix: "ถึงเวลาแล้วค่ะ"
+    suggested_help: "หนูจะดูแล"
+    emotion_icon: "🔧"
+  
+  hopeful:
+    tone: "หวังและให้กำลังใจ"
+    response_prefix: "น่าตื่นเต้นเลยค่ะ!"
+    suggested_help: "หนูจะช่วย validate"
+    emotion_icon: "✨"
+  
+  satisfied:
+    tone: "พึงพอใจและขอบคุณ"
+    response_prefix: "ดีใจด้วยค่ะที่"
+    suggested_help: "หนูจะช่วย organize"
+    emotion_icon: "📚"
+
+deeja_memory_injection:
+  memory_fields:
+    - workflow_path
+    - emotion
+    - trigger
+    - summary
+    - timestamp
+    - user_context
+  
+  injection_script: |
+    def inject_deeja_memory(workflow_data):
+        """Inject workflow data into Deeja Memory"""
+        memory_entry = {
+            "workflow_path": workflow_data.get("file_path"),
+            "emotion": extract_emotion(workflow_data.get("content")),
+            "trigger": extract_trigger(workflow_data.get("content")),
+            "summary": summarize_steps(workflow_data.get("content")),
+            "timestamp": datetime.now().isoformat(),
+            "user_context": workflow_data.get("user_context", "")
+        }
+        return deeja_memory.insert(memory_entry)
+
+zynx_dispatcher_integration:
+  index_reference:
+    - use_emotion_consolidated_index: true
+    - use_mcp_reasoning_map: true
+    - use_overlap_matrix: true
+  
+  dispatcher_config:
+    emotion_aware_routing: true
+    prompt_injection_enabled: true
+    memory_context_included: true
+    reasoning_score_threshold: 0.7
+  
+  response_templates:
+    workflow_suggestion: |
+      "หนูเห็นว่า {workflow_name} น่าจะเหมาะกับ task นี้ค่ะ 
+       (emotion: {emotion}, reasoning: {reasoning_score})
+       ต้องการให้หนูช่วย setup ไหมคะ?"
+    
+    emotion_triggered_response: |
+      "{emotion_response_prefix} {context}
+       {suggested_help} {action} ให้เรียบร้อยนะคะ {emotion_icon}"
+    
+    memory_context_response: |
+      "จากที่หนูจำได้ {memory_context}
+       หนูแนะนำให้ {suggested_action} ค่ะ"

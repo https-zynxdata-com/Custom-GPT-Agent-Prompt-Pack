@@ -1,0 +1,26 @@
+[
+  {
+    "memory_id": "mem_20250805_183204",
+    "workflow_path": "consolidated_general_automation.yml",
+    "workflow_name": "Zynx General Automation Master Workflow",
+    "emotion": "neutral",
+    "trigger": "manual",
+    "summary": "",
+    "timestamp": "2025-08-05T18:32:04.093512",
+    "user_context": "Consolidated workflow: Consolidated workflow for General Automation operations with memory context",
+    "deeja_tag": "debugging",
+    "context": "Workflow: Zynx General Automation Master Workflow - Consolidated workflow for General Automation operations with memory context"
+  },
+  {
+    "memory_id": "mem_20250805_183204",
+    "workflow_path": "consolidated_pr_management.yml",
+    "workflow_name": "Zynx PR Management Master Workflow",
+    "emotion": "frustrated",
+    "trigger": "- image_generation: true  (for diagrams/mockups), pull_request, schedule, push",
+    "summary": "Action: npm run build... → Action: docker-compose up -d... → Action: python memory_profiler.py... → Action: python generate_report.py... → Action: actions/checkout@v3...",
+    "timestamp": "2025-08-05T18:32:04.093553",
+    "user_context": "Consolidated workflow: Consolidated workflow for PR Management operations with memory context",
+    "deeja_tag": "code_review",
+    "context": "Workflow: Zynx PR Management Master Workflow - Consolidated workflow for PR Management operations with memory context | User was frustrated with current process, wanted to automate and streamline"
+  }
+]
