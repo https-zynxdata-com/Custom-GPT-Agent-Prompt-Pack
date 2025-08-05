@@ -1,0 +1,40 @@
+name: Zynx PR Management Master Workflow
+description: Consolidated workflow for PR Management operations
+'on':
+  pull_request:
+    branches:
+    - main
+    - develop
+  push:
+    branches:
+    - main
+    - develop
+  schedule: {}
+jobs:
+  deploy_to_production_0:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Action: npm run build...'
+      run: npm run build
+    - name: 'Action: docker-compose up -d...'
+      run: docker-compose up -d
+  memory_analysis_1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Action: python memory_profiler.py...'
+      run: python memory_profiler.py
+    - name: 'Action: python generate_report.py...'
+      run: python generate_report.py
+  pr_review_workflow_2:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Action: actions/checkout@v3...'
+      run: actions/checkout@v3
+    - name: 'Action: npm test...'
+      run: npm test
+    - name: 'Action: npm run lint...'
+      run: npm run lint
+env:
+  DEPLOY TO PRODUCTION_ENABLED: 'true'
+  MEMORY ANALYSIS_ENABLED: 'true'
+  PR REVIEW WORKFLOW_ENABLED: 'true'
